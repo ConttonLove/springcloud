@@ -1,0 +1,18 @@
+# 与 Spring Cloud Config 相关的属性必须配置在 bootstrap.yml 中，config 部分内容才能被正确加载。
+# 因为 config 的相关配置会先于 application.yml，而 bootstrap.yml 的加载也是先于 application.yml。
+# 实测把他们配置到 application.yml 中也可以实现，但是配置服务的默认端口必须为 8888
+spring:
+  cloud:
+    config:
+      profile: dev  #版本
+      #      profile: prod  #版本
+      name: config-client #服务名称，指代公共配置服务中 config 文件夹下的 config-client-dev.yml 文件的前缀名
+      #      uri: http://192.168.0.3:8760
+      uri: http://127.0.0.1:8888
+# Spring Boot 1.5.X 以上默认开通了安全认证，所以要在配置文件中添加以下配置以将/actuator/refresh这个 Endpoint 暴露出来，
+# 以 post 方法请求 /actuator/refresh 以实现动态刷新配置文件功能
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh

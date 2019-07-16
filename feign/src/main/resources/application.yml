@@ -1,0 +1,12 @@
+server:
+  port: 11020
+
+spring:
+  application:
+    name: feign #需要指明spring.application.name,这个很重要，这在以后的服务与服务之间相互调用一般都是根据这个name 。
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10001/eureka/
+      #defaultZone: http://eureka10001.com:10001/eureka/,http://eureka10002.com:10002/eureka/,http://eureka10003.com:10003/eureka/

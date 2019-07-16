@@ -1,0 +1,32 @@
+#开发环境配置
+server:
+  #端口
+  port: 10100
+
+spring:
+  application:
+    name: admin    # 项目名称尽量用小写
+  # 数据源配置
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/turing?useUnicode=true&characterEncoding=utf8&useSSL=false&tinyInt1isBit=true&autoReconnect=true&serverTimezone=GMT%2B8
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml # 配置映射文件位置
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:9999/eureka/    # 注册服务地址
+##日志
+#logging:
+##  config: classpath:log/logback.xml
+#  path: /log/member
+#  level:
+#    root: info  # 日志等级
+## LCN 分布式事务 TC 配置
+#tx-lcn:
+#  # 分布式事务框架存储的业务切面信息。采用的是h2数据库。绝对路径。该参数默认的值为{user.dir}/.txlcn/{application.name}-{application.port}
+#  aspect:
+#    log:
+#      file-path: D:/log/txlcn/member
